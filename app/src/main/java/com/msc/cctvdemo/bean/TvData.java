@@ -3,10 +3,10 @@ package com.msc.cctvdemo.bean;
 public class TvData {
 
     private String  tvName;
-    private String  tvIcon;
+    private int  tvIcon;
     private String  tvUri;
 
-    public TvData(String tvName, String tvIcon, String  tvUri) {
+    public TvData(String tvName, int tvIcon, String  tvUri) {
         this.tvName = tvName;
         this.tvIcon = tvIcon;
         this.tvUri = tvUri;
@@ -23,11 +23,11 @@ public class TvData {
         this.tvName = tvName;
     }
 
-    public String getTvIcon() {
+    public int getTvIcon() {
         return tvIcon;
     }
 
-    public void setTvIcon(String tvIcon) {
+    public void setTvIcon(int tvIcon) {
         this.tvIcon = tvIcon;
     }
 

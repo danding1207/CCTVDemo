@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.msc.cctvdemo.R;
 import com.msc.cctvdemo.bean.TvData;
 import com.msc.cctvdemo.lisenter.OnClickLisenter;
@@ -44,13 +46,20 @@ public class TVAdapter extends RecyclerView.Adapter<TVAdapter.TVViewHolder> {
     public void onBindViewHolder(@NonNull TVAdapter.TVViewHolder holder, final int position) {
 
         holder.tvTvName.setText(data.get(position).getTvName());
-        if(lisenter!=null)
+        if(lisenter!=null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     lisenter.onClick(v, position);
                 }
             });
+        }
+
+        Glide
+                .with(context)
+                .load(data.get(position).getTvIcon())
+                .into(holder.ivTvIcon);
+
     }
 
     @Override
@@ -62,10 +71,12 @@ public class TVAdapter extends RecyclerView.Adapter<TVAdapter.TVViewHolder> {
     public class TVViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvTvName;
+        private ImageView ivTvIcon;
 
         public TVViewHolder(View itemView) {
             super(itemView);
             tvTvName = itemView.findViewById(R.id.tv_tv_name);
+            ivTvIcon = itemView.findViewById(R.id.iv_tv_icon);
         }
     }
 }
